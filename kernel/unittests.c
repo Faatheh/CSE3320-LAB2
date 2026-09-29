@@ -320,6 +320,7 @@ void test_kern_tasks_donut(void) {
     for (int i=0; i<N_DONUTS; i++) {
         snprintf(name, 10, "donut-%d", i); 
         /* STUDENT: TODO: your code here */
+        donut_pixel(i); //Garrett Nalley
     }
 
 	// current we are on the "init" task. 
