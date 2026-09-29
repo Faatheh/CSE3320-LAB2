@@ -595,6 +595,10 @@ int copy_process(unsigned long clone_flags, unsigned long fn, unsigned long arg,
     // load fn/arg to cpu context. cf ret_from_fork
     /* STUDENT: TODO: your code here */
 
+    //Garrett Nalley
+    p->cpu_context.x20 = fn;        //Set cpu x20 to fn
+    p->cpu_context.x21 = arg;        //Set cpu x21 to arg (function argument)
+
     // also inherit task name
     if (name)
         safestrcpy(p->name, name, sizeof(p->name));
@@ -610,6 +614,10 @@ int copy_process(unsigned long clone_flags, unsigned long fn, unsigned long arg,
     // prep new task's scheduler context: assign values to the pc/sp of new
     // task's cpu_context
 	/* STUDENT: TODO: your code here */
+
+    //Garrett Nalley
+    p->cpu_context.pc = (unsigned long)ret_from_fork;
+    p->cpu_context.sp = (unsigned long)arg;
 	
     release(&cur->lock);
 	release(&p->lock);
@@ -618,6 +626,9 @@ int copy_process(unsigned long clone_flags, unsigned long fn, unsigned long arg,
 	// the last thing: change the task's state so that the scheduler can pick up
     // the task to run in the future
 	/* STUDENT: TODO: your code here */
+
+    //Garrett Nalley
+    p->state = TASK_RUNNING;
 	
 	release(&sched_lock);
 
