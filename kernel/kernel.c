@@ -33,10 +33,10 @@ void kernel_main() {
 	enable_interrupt_controller(0/*coreid*/);
 	/* turn on cpu irq  */
 	/* STUDENT: TODO: your code here */
-	
+	generic_timer_init();
 	/* sched ticks alive. preemptive scheduler is on */
 	/* STUDENT: TODO: your code here */
-	
+	enable_irq();
 	/* now cpu is on its boot stack (boot.S) belonging to the idle task. 
 	schedule() will jump off to kernel stacks belonging to normal tasks
 	(i.e. init_task as set up in sched_init(), sched.c) */
