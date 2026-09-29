@@ -34,6 +34,10 @@ void kernel_main() {
 	/* turn on cpu irq  */
 	/* STUDENT: TODO: your code here */
 	generic_timer_init();
+<<<<<<< Updated upstream
+=======
+	enable_irq();
+>>>>>>> Stashed changes
 	/* sched ticks alive. preemptive scheduler is on */
 	/* STUDENT: TODO: your code here */
 	enable_irq();

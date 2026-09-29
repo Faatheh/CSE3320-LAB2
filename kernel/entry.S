@@ -52,7 +52,12 @@
 	stp	x26, x27, [sp, #16 * 13]
 	stp	x28, x29, [sp, #16 * 14]
 
+<<<<<<< Updated upstream
 	// 2. Read elr_el1 and spsr_el1 into x22 and x23, then save them with x30
+=======
+	/* to support multitasking, we need to save per-task elr and spsr. do that
+	by using x22/x23 as temporary regs */
+>>>>>>> Stashed changes
 	mrs	x22, elr_el1
 	mrs	x23, spsr_el1
 
@@ -68,8 +73,13 @@
 	/* A mirror of kernel_entry (above), to be called as the last thing of an
 	exception handler */
 	// first restore elr and spsr. do that via x22/x23 (cf above)
+<<<<<<< Updated upstream
 	ldp	x30, x22, [sp, #16 * 15]
 	ldr	x23, [sp, #16 * 16]
+=======
+	ldr	x23, [sp, #16 * 16]
+	ldp	x30, x22, [sp, #16 * 15]
+>>>>>>> Stashed changes
 
 	msr	elr_el1, x22			
 	msr	spsr_el1, x23
@@ -139,7 +149,11 @@ vectors:
 	//  		This is the mode that our kernel is currently using
 	ventry	sync_invalid_el1h			// Synchronous EL1h
 	// IRQ EL1h  
+<<<<<<< Updated upstream
 	ventry	el1_irq
+=======
+	ventry el1_irq
+>>>>>>> Stashed changes
 	ventry	fiq_invalid_el1h			// FIQ EL1h
 	ventry	error_invalid_el1h			// Error EL1h
 
