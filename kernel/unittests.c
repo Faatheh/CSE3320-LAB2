@@ -330,11 +330,11 @@ void test_kern_tasks_donut(void) {
         // --- QUEST 6: Set custom priorities for different donuts ---
         // 'res' holds the pid/index of the newly created task struct
         if (i == 0) {
-            task[res]->priority = 4;   // High priority (more turns)
-            task[res]->credits  = 4;
-        } else {
-            task[res]->priority = 7;   // Low priority (fewer turns)
+            task[res]->priority = 7;   // High priority (more turns)
             task[res]->credits  = 7;
+        } else {
+            task[res]->priority = 4;   // Low priority (fewer turns)
+            task[res]->credits  = 4;
         }
     }
 
