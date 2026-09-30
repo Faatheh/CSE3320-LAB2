@@ -308,6 +308,10 @@ void kern_task_donut(int idx) {
         get_el(), myproc()->pid, idx);
     // exp: diff proirities --> donuts will turn at diff rates
 	/* STUDENT: TODO: your code here */
+    while (1) {
+        donut(idx);
+        yield();
+    }
 }
 
 void test_kern_tasks_donut(void) {
@@ -326,11 +330,11 @@ void test_kern_tasks_donut(void) {
         // --- QUEST 6: Set custom priorities for different donuts ---
         // 'res' holds the pid/index of the newly created task struct
         if (i == 0) {
-            task[res]->priority = 10;   // High priority (more turns)
-            task[res]->credits  = 10;
+            task[res]->priority = 4;   // High priority (more turns)
+            task[res]->credits  = 4;
         } else {
-            task[res]->priority = 2;    // Low priority (fewer turns)
-            task[res]->credits  = 2;
+            task[res]->priority = 7;   // Low priority (fewer turns)
+            task[res]->credits  = 7;
         }
     }
 
