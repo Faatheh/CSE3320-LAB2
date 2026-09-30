@@ -25,16 +25,26 @@ static inline void setpixel(unsigned char *buf, int x, int y, int pit, PIXEL p) 
     *(PIXEL *)(buf + y * pit + x * PIXELSIZE) = p;
 }
 
-// canvas layout, 2x2
-static const int xoff[] = {0,NN/2,0,NN/2};
-static const int yoff[] = {0,0,NN/2,NN/2};
-_Static_assert(N_DONUTS <= NELEM(xoff));
+// canvas layout, 4x4 (16 donuts)
+static const int xoff[] = {
+    0,    NN/4, 2*NN/4, 3*NN/4,
+    0,    NN/4, 2*NN/4, 3*NN/4,
+    0,    NN/4, 2*NN/4, 3*NN/4,
+    0,    NN/4, 2*NN/4, 3*NN/4
+};
+static const int yoff[] = {
+    0,     0,     0,     0,
+    NN/4,  NN/4,  NN/4,  NN/4,
+    2*NN/4, 2*NN/4, 2*NN/4, 2*NN/4,
+    3*NN/4, 3*NN/4, 3*NN/4, 3*NN/4
+};
+_Static_assert(N_DONUTS <= NELEM(xoff)); // Must be at least 16
 
-enum {K=4}; // donut scale factor, see code below
-_Static_assert(80*K  <= NN/2); // columns
-_Static_assert(22*K*2  <= NN/2); // rows
+enum {K = 2}; // Reduced scale factor to fit smaller cells (or increase NN)
+_Static_assert(80*K  <= NN/4); // columns per cell
+_Static_assert(22*K*2 <= NN/4); // rows per cell
 
-static char b[N_DONUTS][1760];        // text buffer (W 80 H 22?
+static char b[N_DONUTS][1760];         // text buffer
 static signed char z[N_DONUTS][1760]; // z buffer
 
 void donut_canvas_init(void) {
