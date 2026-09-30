@@ -158,6 +158,16 @@ void donut_pixel(int idx) {
             }
         }
         /* STUDENT: TODO: your code here */ 
+        static int frame_counts[N_DONUTS] = {0};
+        
+        // If it's donut 0, count frames and exit after roughly 3 seconds 
+        // (assuming roughly 30-60 frames depending on performance, e.g., 90 frames)
+        if (idx == 0) {
+            frame_counts[idx]++;
+            if (frame_counts[idx] > 1800) { //adjust this number based on your performance or monitor to get roughly 3 seconds.
+                exit_process(0);
+            }
+        }
         yield();
     }
 }
