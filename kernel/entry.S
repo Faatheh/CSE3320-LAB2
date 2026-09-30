@@ -149,11 +149,7 @@ vectors:
 	//  		This is the mode that our kernel is currently using
 	ventry	sync_invalid_el1h			// Synchronous EL1h
 	// IRQ EL1h  
-<<<<<<< Updated upstream
-	ventry	el1_irq
-=======
 	ventry el1_irq
->>>>>>> Stashed changes
 	ventry	fiq_invalid_el1h			// FIQ EL1h
 	ventry	error_invalid_el1h			// Error EL1h
 
