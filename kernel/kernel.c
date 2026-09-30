@@ -62,7 +62,7 @@ void init(int arg/*ignored*/) {
 
 	// Q2: quest: "two cooperative printers"
 	/* STUDENT: TODO: your code here */
-	test_kern_tasks_print(); // Garrett Nalley
+	//test_kern_tasks_print(); // Garrett Nalley
 	// Q4: quest: "two donuts"
 	/* STUDENT: TODO: your code here */
 	test_kern_tasks_donut(); // Garrett Nalley
