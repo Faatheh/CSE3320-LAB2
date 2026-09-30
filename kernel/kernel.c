@@ -35,8 +35,6 @@ void kernel_main() {
 	/* STUDENT: TODO: your code here */
 	generic_timer_init();
 
-	enable_irq();
-
 	/* sched ticks alive. preemptive scheduler is on */
 	/* STUDENT: TODO: your code here */
 	enable_irq();
@@ -65,9 +63,9 @@ void init(int arg/*ignored*/) {
 	//test_kern_tasks_print(); // Garrett Nalley
 	// Q4: quest: "two donuts"
 	/* STUDENT: TODO: your code here */
-	test_kern_tasks_donut(); // Garrett Nalley
+	//test_kern_tasks_donut(); // Garrett Nalley
 	// test_kern_task_mgmt();
-	// test_kern_reader_writer(); 
+	test_kern_reader_writer(); 
 
 	while (1) {
 		wpid = wait(0 /* does not care about status */); 
