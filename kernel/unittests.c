@@ -320,7 +320,18 @@ void test_kern_tasks_donut(void) {
     for (int i=0; i<N_DONUTS; i++) {
         snprintf(name, 10, "donut-%d", i); 
         /* STUDENT: TODO: your code here */
-        copy_process(PF_KTHREAD, (unsigned long)&donut, i /*arg*/, name);
+        res = copy_process(PF_KTHREAD, (unsigned long)&kern_task_donut, (unsigned long)i, name);
+        BUG_ON(res < 0);
+        
+        // --- QUEST 6: Set custom priorities for different donuts ---
+        // 'res' holds the pid/index of the newly created task struct
+        if (i == 0) {
+            task[res]->priority = 10;   // High priority (more turns)
+            task[res]->credits  = 10;
+        } else {
+            task[res]->priority = 2;    // Low priority (fewer turns)
+            task[res]->credits  = 2;
+        }
     }
 
 	// current we are on the "init" task. 
